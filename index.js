@@ -86,12 +86,16 @@ class Neighborhood {
       return store.deliveries.filter(delivery => delivery.customerId === this.id);
     }
     
-   meals () {
-     return this.meals.filter(meal => {
-       return meals.customerId === this.id;
-     });
-   }
-     
+  // meals () {
+  //   return this.meals.filter(meal => {
+  //     return meals.customerId === this.id;
+  //   });
+  // }
+   
+   meals() {
+      return this.deliveries().map(delivery => delivery.meal());
+    }
+  
     totalSpent() {
        return this.meals().reduce(function(sum, meal) {
          return sum + meal.price;

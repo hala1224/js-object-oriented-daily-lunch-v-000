@@ -26,42 +26,21 @@ class Neighborhood {
     deliveries() {
       return store.deliveries.filter(delivery => delivery.neighborhoodId === this.id);
     }
-    // deliveries() {
-    //   let deliveryList=[];
-      
-    //   return this.deliveries.filter(delivery => {
-    //     if ( delivery.neighborhoodId === this.id ) {
-    //       deliveryList.push(delivery);
-    //     }
-    //     return deliveryList.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
-    //   });
-  
-    // }
+    
     
      customers() {
          return store.customers.filter(customer => {
            return customer.neighborhoodId === this.id;
          });
-       }  
-  
-      // deliveries() {
-      //   let allDeliveries = this.customers().map(customer => {
-      //     return customer.deliveries();
-      //   });
-      //   let mergedArr=[].concat.apply([], allDeliveries());
-      //   // return mergedArr;
-      //   return mergedArr.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
-      // }
-  
-    // customers() {
-    //   return this.customers.filter(customer => {
-    //     return customer.neighborhoodId === this.id;
-    //   });
-    // }
- 
-    
-  
-  
+       }
+       
+      meals() {
+          const allMeals = this.customers().map(customer => customer.meals());
+          const merged = [].concat.apply([], allMeals);
+          return [...new Set(merged)];
+        }
+     
+
  }
 
 
@@ -75,25 +54,12 @@ class Neighborhood {
       store.customers.push(this);
     }
    
-  // deliveries() {
-  //   let deliveryList=[];
-  //   // return this.deliveries.filter(delivery => {
-  //     if (store.deliveries.customerId === this.id) {
-  //       deliveryList.push(store.deliveries);
-  //     }
-  //     return deliveryList;
-  //   // });
-  // }
+
   
-  deliveries() {
-      return store.deliveries.filter(delivery => delivery.customerId === this.id);
-    }
+    deliveries() {
+        return store.deliveries.filter(delivery => delivery.customerId === this.id);
+      }
     
-  // meals () {
-  //   return this.meals.filter(meal => {
-  //     return meals.customerId === this.id;
-  //   });
-  // }
    
    meals() {
       return this.deliveries().map(delivery => delivery.meal());
@@ -122,11 +88,7 @@ class Neighborhood {
          });
        }
        
-      // customers() {
-      //   return this.customer.filter( customer => {
-      //     return customer.mealId === this.id;
-      //   });
-      // }
+     
        
        customers() {
           return this.deliveries().map(delivery => {

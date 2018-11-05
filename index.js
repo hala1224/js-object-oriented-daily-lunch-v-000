@@ -25,13 +25,14 @@ class Neighborhood {
     
     deliveries() {
       let deliveryList=[];
+      
       return this.deliveries.filter(delivery => {
         if ( delivery.neighborhoodId === this.id ) {
           deliveryList.push(delivery);
         }
-        return deliveryList;
-        // .reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
+        return deliveryList.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
       });
+  
     }
     
      customers() {
@@ -58,9 +59,6 @@ class Neighborhood {
     
   
   
-    totalSpent(){
-      
-    }
  }
 
 

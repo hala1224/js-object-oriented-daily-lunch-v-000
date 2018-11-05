@@ -74,8 +74,12 @@ class Neighborhood {
     }
    
    deliveries() {
+     let deliveryList=[];
      return this.deliveries.filter(delivery => {
-       return deliveries.customerId === this.id;
+       if (deliveries.customerId === this.id) {
+         deliveryList.push(delivery);
+       }
+       return deliveryList;
      });
    }
     

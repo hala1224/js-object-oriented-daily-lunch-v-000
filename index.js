@@ -72,15 +72,19 @@ class Neighborhood {
       store.customers.push(this);
     }
    
-   deliveries() {
-     let deliveryList=[];
-    // return this.deliveries.filter(delivery => {
-       if (store.deliveries.customerId === this.id) {
-         deliveryList.push(store.deliveries);
-       }
-       return deliveryList;
-    // });
-   }
+  // deliveries() {
+  //   let deliveryList=[];
+  //   // return this.deliveries.filter(delivery => {
+  //     if (store.deliveries.customerId === this.id) {
+  //       deliveryList.push(store.deliveries);
+  //     }
+  //     return deliveryList;
+  //   // });
+  // }
+  
+  deliveries() {
+      return store.deliveries.filter(delivery => delivery.customerId === this.id);
+    }
     
    meals () {
      return this.meals.filter(meal => {

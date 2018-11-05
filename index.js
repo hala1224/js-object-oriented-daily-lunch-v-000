@@ -96,12 +96,16 @@ class Neighborhood {
     	    });
        }
        
-       static byPrice() {
-         return store.meals.sort((meal1, meal2) => {
-          return meal1.price < meal2.price;
-        });
-      }	
-       
+      // static byPrice() {
+      //   return store.meals.sort((meal1, meal2) => {
+      //     return meal1.price < meal2.price;
+      //   });
+      // }	
+      
+      static byPrice() {
+        return store.meals.sort((a, b) => a.price < b.price);
+      }
+    
     }
 
     

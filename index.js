@@ -75,7 +75,7 @@ class Neighborhood {
  
     class Meal {
       
-      constructor(title = {}, price = {}, meal ={}){	  
+      constructor(title = {}, price = {}){	  
         this.title = title;	    
         this.price = price;
         this.id = mealId++;
